@@ -1,0 +1,75 @@
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #000000; /* Black background */
+    color: #333; /* Text color */
+    line-height: 1.6;
+}
+
+header {
+    background: #000000; /* Black background */
+    color: #fff; /* White text */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start (left) */
+    height: auto; /* Adjust height based on content */
+}
+
+.header-content {
+    display: flex;
+    align-items: center; /* Vertically center the title and logo */
+}
+
+.header-logo-1 {
+    height: 50px; /* Adjust the height as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-left: 10rem; /* Space between text and image */
+}
+
+.header-logos {
+    height: 50px; /* Adjust the height as needed */
+    width: auto; /* Maintain aspect ratio */
+    margin-left: 2rem; /* Space between text and image */
+
+}
+nav {
+    margin-top: 1rem; /* Space between header content and navigation */
+    width: 100%; /* Ensure nav takes full width */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Arrange nav items in a row */
+    gap: 1rem; /* Space between nav items */
+    justify-content: flex-start; /* Align nav items to the left */
+}
+
+nav ul li a {
+    color: #fff; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+footer {
+    background: #000000; /* Black background */
+    color: #fff; /* White text */
+    text-align: center;
+    padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+h1 {
+    font-size: 36px; /* Font size for the header */
+}
+
