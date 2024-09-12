@@ -1,4 +1,4 @@
-* {
+* * {
     margin: 0; 
     padding: 0;
     box-sizing: border-box;
@@ -72,4 +72,3 @@ footer {
 h1 {
     font-size: 36px; /* Font size for the header */
 }
-
