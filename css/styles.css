@@ -1,67 +1,99 @@
-* * {
-    margin: 0; 
+* {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: #000000; /* Black background */
-    color: #333; /* Text color */
+    background-color: #000000;
+    color: #333;
     line-height: 1.6;
 }
 
 header {
-    background: #000000; /* Black background */
-    color: #fff; /* White text */
+    background: #000000;
+    color: #fff;
     padding: 1rem;
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    align-items: flex-start; /* Align items to the start (left) */
-    height: auto; /* Adjust height based on content */
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
 }
 
 .header-content {
     display: flex;
-    align-items: center; /* Vertically center the title and logo */
+    align-items: center;
 }
 
 .header-logo-1 {
-    height: 60px; /* Adjust the height as needed */
-    width: auto; /* Maintain aspect ratio */
-    margin-left: 10rem; /* Space between text and image */
+    height: 60px;
+    width: auto;
 }
 
 .header-logos {
-    height: 60px; /* Adjust the height as needed */
-    width: auto; /* Maintain aspect ratio */
-    margin-left: 3rem; /* Space between text and image */
-
+    height: 60px;
+    width: auto;
 }
+
+/* Adjusting the margin for first logo and subsequent logos */
+.parent {
+    position: relative;
+    display: inline-block;
+}
+
+/* Set spacing for first logo */
+.parent:first-of-type {
+    margin-left: 10rem;
+}
+
+/* Set spacing for subsequent logos */
+.parent:not(:first-of-type) {
+    margin-left: 3rem;
+}
+
+/* Hide the text by default */
+.child {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+    opacity: 0; /* Text is hidden */
+    transition: opacity 0.15s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Show text when hovering over the parent (image) */
+.parent:hover .child {
+    opacity: 1; /* Text becomes visible on hover */
+}
+
 nav {
-    margin-top: 1rem; /* Space between header content and navigation */
-    width: 100%; /* Ensure nav takes full width */
+    margin-top: 1rem;
+    width: 100%;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Arrange nav items in a row */
-    gap: 1rem; /* Space between nav items */
-    justify-content: flex-start; /* Align nav items to the left */
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
 }
 
 nav ul li a {
-    color: #fff; /* Link color */
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
     text-align: center;
 }
 
 footer {
-    background: #000000; /* Black background */
-    color: #fff; /* White text */
+    background: #000000;
+    color: #fff;
     text-align: center;
     padding: 0.5rem;
     position: fixed;
@@ -70,5 +102,6 @@ footer {
 }
 
 h1 {
-    font-size: 36px; /* Font size for the header */
+    font-size: 36px;
 }
+
