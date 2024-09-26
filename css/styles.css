@@ -161,7 +161,7 @@ main {
     justify-content: center;
     padding: 1rem;
     overflow: hidden;
-    height: calc(100vh - 600px);
+    height: calc(100vh - 160px);
 }
 
 .pdf-container {
