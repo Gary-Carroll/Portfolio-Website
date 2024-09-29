@@ -9,38 +9,46 @@
 	<body>
 		<header>
 			<div class="header-content">
-				<h1>Gary Carroll Portfolio</h1>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/python-logo.png" alt="Python" class="header-logo-1">
-					<div class="child">Python</div>
+				<div class="header-content-left">
+					<h1>Gary Carroll Portfolio</h1>
 				</div>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/r-logo.png" alt="R" class="header-logos">
-					<div class="child">R</div>
-				</div>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/sql-logo-2.png" alt="SQL" class="header-logos">
-					<div class="child">SQL</div>
-				</div>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/bash-logo.png" alt="Bash" class="header-logos">
-					<div class="child">Bash</div>
-				</div>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/html-logo.png" alt="HTML" class="header-logos">
-					<div class="child">HTML</div>
-				</div>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/css-logo.png" alt="CSS" class="header-logos">
-					<div class="child">CSS</div>
-				</div>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/js-logo.png" alt="JavaScript" class="header-logos">
-					<div class="child">JavaScript</div>
-				</div>
-				<div class="parent">
-					<img src="/home/garyc/Website/images/tableau-logo.png" alt="Tableau" class="header-logos">
-					<div class="child">Tableau</div>
+				<div class="header-content-right">
+					<div class="parent">
+						<img src="/home/garyc/Website/images/python-logo.png" alt="Python" class="header-logo-1">
+						<div class="child">Python</div>
+					</div>
+					<div class="parent">
+						<img src="/home/garyc/Website/images/r-logo.png" alt="R" class="header-logos">
+						<div class="child">R</div>
+					</div>
+					<div class="parent">
+						<img src="/home/garyc/Website/images/sql-logo-2.png" alt="SQL" class="header-logos">
+						<div class="child">SQL</div>
+					</div>
+					<div class="parent">
+						<img src="/home/garyc/Website/images/bash-logo.png" alt="Bash" class="header-logos">
+						<div class="child">Bash</div>
+					</div>
+					<div class="parent">
+						<img src="/home/garyc/Website/images/tableau-logo.png" alt="Tableau" class="header-logos">
+						<div class="child">Tableau</div>
+					</div>
+					<div class="parent">
+						<img src="/home/garyc/Website/images/powerbi-logo.png" alt="Power BI" class="header-logos">
+						<div class="child">Power BI</div>
+					</div>					<div class="parent">
+						<img src="/home/garyc/Website/images/html-logo.png" alt="HTML" class="header-logos">
+						<div class="child">HTML</div>
+					</div>
+					<div class="parent">
+						<img src="/home/garyc/Website/images/css-logo.png" alt="CSS" class="header-logos">
+						<div class="child">CSS</div>
+					</div>
+					<div class="parent">
+						<img src="/home/garyc/Website/images/js-logo.png" alt="JavaScript" class="header-logos">
+						<div class="child">JS</div>
+					</div>
+
 				</div>
 			</div>
 			<nav>
@@ -51,11 +59,68 @@
 				</ul>
 			</nav>
 		</header>
+
 		<div class="header-line"></div>
-		<footer>
-			<p>&copy; 2024 Gary Carroll</p>
+		<br>
+		<div class="center-text">
+			<h2>Analysis of 3000 chess games from Lichess</h2>
+			<p>This is an analysis of my last 3000 bullet chess games on Lichess. I retrieve the game data through the <a href="https://python-lichess.readthedocs.io/en/latest/index.html" target="_blank">Lichess API</a> for Python. These games were played with each player starting with 1 minute on the clock and no extra time given after each move. The data is JSON format, below is an example of what an entry for a single game looks like.</p><p>The 'clock' key contains information on the time format of the game. The 'id' key contains the unique identifier string of the game. The 'createdAt' and 'lastMoveAt' keys contain times in a Unix timestamp millisecond format. The 'rated' key indicates whether the game is rated or casual. The 'source' key indicates whether the opponent is a random opponent from the player pool or a friend. The 'status' key contains information on how the game ended. The 'variant' key indicates whether the game is played under standard chess rules or some other variant.</p>
+			<br>
+				<pre class="code-block"><code>{'clock': {'increment': 0, 'initial': 60, 'totalTime': 60},
+ 'createdAt': 1726590048124,
+ 'id': 'Ete4kTua',
+ 'lastMoveAt': 1726590150465,
+ 'moves': 'e4 g6 Nf3 Bg7 d4 e6 c4 Ne7 Nc3 c6 Be3 O-O Be2 d5 O-O dxc4 Qd2 b5 '
+          'Bh6 Bd7 Bxg7 Kxg7 Ne5 Ng8 Bf3 f6 Nxd7 Nxd7 Rae1 Nb6 e5 f5 Bxc6 Nd7 '
+          'Bxa8 Qxa8 d5 exd5 Nxd5 Rd8 e6 Ndf6 e7 Rxd5 Qe3 Qe8 Qe6 h5 Re3 Ne4 '
+          'f3 Nc5 Rfe1 Nxe6 Rxe6 Nf6 h4 Nd7 Ra6 Nc5 Rxa7 Nd3',
+ 'perf': 'bullet',
+ 'players': {'black': {'rating': 1836,
+                       'ratingDiff': 6,
+                       'user': {'id': 'garethc13', 'name': 'GarethC13'}},
+             'white': {'rating': 1842,
+                       'ratingDiff': -6,
+                       'user': {'id': 'mantagasm', 'name': 'Mantagasm'}}},
+ 'rated': True,
+ 'source': 'pool',
+ 'speed': 'bullet',
+ 'status': 'outoftime',
+ 'variant': 'standard',
+ 'winner': 'black'}</code></pre><br><br>
+
+
+<pre class="code-block"><code><div class="line"><span class="line-number">1.</span> gameslist = list(lichess.api.user_games('GarethC13', max=3000, perfType='bullet'))</div><div class="line"><span class="line-number">2.</span> whitegames = [game for game in gameslist if game['players'].get('white').get('user').get('id') == 'garethc13']</div><div class="line"><span class="line-number">3.</span> blackgames = [game for game in gameslist if game['players'].get('white').get('user').get('id') != 'garethc13']</div><div class="line"><span class="line-number">4.</span> print(len(gameslist),'total bullet games.')</div><div class="line"><span class="line-number">5.</span> print(len(whitegames),'as white.')</div><div class="line"><span class="line-number">6.</span> print(len(blackgames),'as black.')</div></code></pre><br>
+			<div class="copy-container">
+				<button class="copyButton" onclick="copyText1()">Copy code</button>
+				<span class="copyMessage">Text copied</span>
+			</div>
+
+
+
+			<script>
+				function copyText1() {
+									navigator.clipboard.writeText(`gameslist = list(lichess.api.user_games('GarethC13', max=3000, perfType='bullet'))
+			       whitegames = [game for game in gameslist if game['players'].get('white').get('user').get('id') == 'garethc13']
+			       blackgames = [game for game in gameslist if game['players'].get('white').get('user').get('id') != 'garethc13']
+			       print(len(gameslist),'total bullet games.')
+			       print(len(whitegames),'as white.')
+			       print(len(blackgames),'as black.')`);
+
+									var message = document.querySelector('.copyMessage');
+									var button = document.querySelector('.copyButton');
+
+									// Show the "Text copied" message when the button is clicked
+									message.style.display = 'inline';
+
+									// Keep the message visible until mouse leaves the button
+									button.addEventListener('mouseleave', function() {
+														message.style.display = 'none'; // Hide message when mouse leaves button
+													});
+								}
+			</script><br><br>
+				<p>The following code block shows the packages and modules that are imported.
+		</div> <footer>
+			<p class="center-align">&copy; 2024 Gary Carroll</p>
 		</footer>
 	</body>
 </html>
-
-

@@ -7,7 +7,7 @@
 
 body {
     background-color: #000000;
-    color: #333;
+    color: white;
     line-height: 1.6;
 }
 
@@ -35,7 +35,7 @@ header {
 .header-content-right {
     display: flex;
     justify-content: flex-end;
-    gap: 3.5rem;
+    gap: 4rem;
 }
 
 .header-logo-1 {
@@ -104,12 +104,22 @@ h1 {
     font-size: 36px;
 }
 
+h2 {
+	color: white;
+}
+
 .content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     height: 80vh;
     padding: 2rem;
+}
+
+.center-text {
+	text-align: center;
+	margin: 2rem auto 0;
+	width: 80%;
 }
 
 .text-section {
@@ -174,4 +184,94 @@ main {
     width: 100%;
     height: calc(100vh - 170px);
     position: center;
+}
+
+.code-block{
+	background-color: #333333;
+	color: #ffffff;
+	padding: 10px;
+	border-radius: 12px;
+	border: none;
+	font-family: "Courier New", Courier, monospace;
+	overflow-x: auto;
+	display: inline-block;
+	margin: 0;
+	height: auto;
+	text-align: left;
+}
+
+.line {
+	display:flex;
+}
+
+.line-number {
+	width: 30px;
+	background-color: #444;
+	text-align: center;
+	color: #ccc;
+}
+
+.code-block code {
+	white-space: pre-wrap;
+}
+pre {
+	margin: 0;
+	padding: 0;
+}
+
+code {
+	display: inline;
+}
+
+a:link {
+	color: white;
+}
+
+a:visited {
+	color: white;
+}
+
+a:active {
+	color: white;
+}
+
+
+button {
+    background-color: #333333;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 7px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+button:active {
+    background-color: #777777;
+}
+
+button:hover {
+    background-color: #555555;
+}
+
+.copyMessage {
+    display: none;
+    color: white;
+    position: absolute;
+    left: 100%;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.copy-container {
+	position: relative;
+	display: inline-block;
+}
+
+p {
+	text-align: left;
+}
+
+.center-align {
+	text-align: center;
 }
