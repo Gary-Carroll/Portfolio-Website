@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="/home/garyc/Website/css/styles.css">
 	</head>
 	<body>
+<script src="/home/garyc/Website/js/script.js"></script>
 		<header>
 			<div class="header-content">
 				<div class="header-content-left">
@@ -66,6 +67,7 @@
 			<h2>Analysis of 3000 chess games from Lichess</h2>
 			<p>This is an analysis of my last 3000 bullet chess games on Lichess. I retrieve the game data through the <a href="https://python-lichess.readthedocs.io/en/latest/index.html" target="_blank">Lichess API</a> for Python. These games were played with each player starting with 1 minute on the clock and no extra time given after each move. The data is JSON format, below is an example of what an entry for a single game looks like.</p><p>The 'clock' key contains information on the time format of the game. The 'id' key contains the unique identifier string of the game. The 'createdAt' and 'lastMoveAt' keys contain times in a Unix timestamp millisecond format. The 'rated' key indicates whether the game is rated or casual. The 'source' key indicates whether the opponent is a random opponent from the player pool or a friend. The 'status' key contains information on how the game ended. The 'variant' key indicates whether the game is played under standard chess rules or some other variant.</p>
 			<br>
+
 				<pre class="code-block"><code>{'clock': {'increment': 0, 'initial': 60, 'totalTime': 60},
  'createdAt': 1726590048124,
  'id': 'Ete4kTua',
@@ -88,37 +90,29 @@
  'variant': 'standard',
  'winner': 'black'}</code></pre><br><br>
 
+				<p>This first code block shows the packages and modules that are imported, and how to access the data of a specific user ID. The rest of the code can be run for any specific user by modifying only the user_id variable at the start.</p> <br>
 
-<pre class="code-block"><code><div class="line"><span class="line-number">1.</span> gameslist = list(lichess.api.user_games('GarethC13', max=3000, perfType='bullet'))</div><div class="line"><span class="line-number">2.</span> whitegames = [game for game in gameslist if game['players'].get('white').get('user').get('id') == 'garethc13']</div><div class="line"><span class="line-number">3.</span> blackgames = [game for game in gameslist if game['players'].get('white').get('user').get('id') != 'garethc13']</div><div class="line"><span class="line-number">4.</span> print(len(gameslist),'total bullet games.')</div><div class="line"><span class="line-number">5.</span> print(len(whitegames),'as white.')</div><div class="line"><span class="line-number">6.</span> print(len(blackgames),'as black.')</div></code></pre><br>
-			<div class="copy-container">
+<pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> import lichess.api</div><div class="line"><span class="line-number">  2.</span> import matplotlib.pyplot as plt</div><div class="line"><span class="line-number">  3.</span> import seaborn as sns</div><div class="line"><span class="line-number">  4.</span> import numpy as np</div><div class="line"><span class="line-number">  5.</span> import pickle</div><div class="line"><span class="line-number">  6.</span> from datetime import datetime</div><div class="line"><span class="line-number">  7.</span> import pandas as pd</div><div class="line"><span class="line-number">  8.</span> import calendar</div><div class="line"><span class="line-number">  9.</span> from pprint import pprint</div><div class="line"><span class="line-number">10.</span> </div><div class="line"><span class="line-number">11.</span> user_id = 'garethc13'</div><div class="line"><span class="line-number">12.</span> user = lichess.api.user(user_id)</div><div class="line"><span class="line-number">13.</span> print(user['perfs']['bullet']['rating'])</div></code></pre><br>
+<div class="copy-container" id="copy1">
 				<button class="copyButton" onclick="copyText1()">Copy code</button>
+				<span class="copyMessage">Text copied</span>
+			</div>
+			<br><br>
+
+			<pre class="code-block"><code><div class="line"><span class="line-number">Output:</span> 1897</div></code></pre><br><br>
+			<p>The most recent 3000 games are loaded into the variable 'gameslist' by specifying 'max=3000'. This takes some time to complete so I recommend loading these games once and then saving the resulting list as a .pikl file so that it can be quickly loaded in again in the future. The games are split into a list of games where I played as black and a list where I played as black.</p> <br>
+
+
+
+<pre class="code-block"><code><div class="line"><span class="line-number">1.</span> gameslist = list(lichess.api.user_games(user_id, max=3000, perfType='bullet'))</div><div class="line"><span class="line-number">2.</span> whitegames = [game for game in gameslist if game['players'].get('white').get('user').get('id') == 'garethc13']</div><div class="line"><span class="line-number">3.</span> blackgames = [game for game in gameslist if game['players'].get('white').get('user').get('id') != 'garethc13']</div><div class="line"><span class="line-number">4.</span> print(len(gameslist),'total bullet games.')</div><div class="line"><span class="line-number">5.</span> print(len(whitegames),'as white.')</div><div class="line"><span class="line-number">6.</span> print(len(blackgames),'as black.')</div></code></pre><br>
+			<div class="copy-container" id="copy2">
+				<button class="copyButton" onclick="copyText2()">Copy code</button>
 				<span class="copyMessage">Text copied</span>
 			</div>
 
 
 
-			<script>
-				function copyText1() {
-									navigator.clipboard.writeText(`gameslist = list(lichess.api.user_games('GarethC13', max=3000, perfType='bullet'))
-			       whitegames = [game for game in gameslist if game['players'].get('white').get('user').get('id') == 'garethc13']
-			       blackgames = [game for game in gameslist if game['players'].get('white').get('user').get('id') != 'garethc13']
-			       print(len(gameslist),'total bullet games.')
-			       print(len(whitegames),'as white.')
-			       print(len(blackgames),'as black.')`);
-
-									var message = document.querySelector('.copyMessage');
-									var button = document.querySelector('.copyButton');
-
-									// Show the "Text copied" message when the button is clicked
-									message.style.display = 'inline';
-
-									// Keep the message visible until mouse leaves the button
-									button.addEventListener('mouseleave', function() {
-														message.style.display = 'none'; // Hide message when mouse leaves button
-													});
-								}
-			</script><br><br>
-				<p>The following code block shows the packages and modules that are imported.
+			<br><br>
 		</div> <footer>
 			<p class="center-align">&copy; 2024 Gary Carroll</p>
 		</footer>
