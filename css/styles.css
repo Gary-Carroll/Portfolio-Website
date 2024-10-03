@@ -203,13 +203,13 @@ main {
 
 .line {
     display: flex;
-    align-items: center; /* Ensure items in the line are aligned */
+    align-items: center;
 }
 
 .line-number {
     width: auto;
     background-color: #444;
-    padding: 0 5px; /* Add padding to make the line number look better */
+    padding: 0 5px;
     color: #ccc;
 }
 

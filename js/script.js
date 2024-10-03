@@ -40,3 +40,38 @@ function copyText2() {
 		message.style.display = 'none';
 	});
 }
+
+function copyText3() {
+	navigator.clipboard.writeText(`move = ['a3','a4','b3','b4','c3','c4','d3','d4','e3','e4','f3','f4','g3','g4','h3','h4','Nf3','Nb3','Na3','Nh3']
+squares = [[2,7],[3,7],[2,6],[3,6],[2,5],[3,5],[2,4],[3,4],[2,3],[3,3],[2,2],[3,2],[2,1],[3,1],[2,0],[3,0],
+           [2,2],[2,6],[2,7],[2,0]]
+values = [sum(1 for i in blackgames if i['moves'].split()[0] == m) for m in move]
+data = np.zeros([8, 8])
+data[[s[0] for s in squares], [s[1] for s in squares]] = values
+data_avg = data/sum(sum(data))   
+cmap = sns.cm.rocket_r
+x_axis_labels = ['h','g','f','e','d','c','b','a']
+y_axis_labels = [*range(1,9)]
+plt.gcf().set_facecolor('#333333')
+plt.gca().set_facecolor('#333333') 
+ax = sns.heatmap(data_avg, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap, linewidth=0.5, cbar_kws={'label': 'Move Frequency'}) 
+plt.title('Opening Moves of my Opponents as White', color='white') 
+ax.set_xlabel('File', color='white') 
+ax.set_ylabel('Rank', color='white')
+ax.tick_params(colors='white')
+colorbar = ax.collections[0].colorbar
+colorbar.set_label('Move Frequency', color='white')
+colorbar.ax.yaxis.set_tick_params(color='white')
+plt.setp(colorbar.ax.get_yticklabels(), color='white') 
+plt.savefig('openings.png')
+plt.show()`);
+
+	var container = document.querySelector('#copy3');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
