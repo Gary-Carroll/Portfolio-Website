@@ -64,7 +64,7 @@
 		<div class="header-line"></div>
 		<br>
 		<div class="center-text">
-			<h2>Analysis of 3000 chess games from Lichess</h2>
+			<h1>Analysis of 3000 chess games from Lichess</h1><br><br>
 			<p>This is an analysis of my last 3000 bullet chess games on Lichess. I retrieve the game data through the <a href="https://python-lichess.readthedocs.io/en/latest/index.html" target="_blank">Lichess API</a> for Python. These games were played with each player starting with 1 minute on the clock and no extra time given after each move. The data is JSON format, below is an example of what an entry for a single game looks like.</p><p>The 'clock' key contains information on the time format of the game. The 'id' key contains the unique identifier string of the game. The 'createdAt' and 'lastMoveAt' keys contain times in a Unix timestamp millisecond format. The 'rated' key indicates whether the game is rated or casual. The 'source' key indicates whether the opponent is a random opponent from the player pool or a friend. The 'status' key contains information on how the game ended. The 'variant' key indicates whether the game is played under standard chess rules or some other variant.</p>
 			<br>
 
@@ -88,7 +88,7 @@
  'speed': 'bullet',
  'status': 'outoftime',
  'variant': 'standard',
- 'winner': 'black'}</code></pre><br><br>
+ 'winner': 'black'}</code></pre><br><br><br>
 
 				<p>This first code block shows the packages and modules that are imported, and how to access the data of a specific user ID. The rest of the code can be run for any specific user by modifying only the user_id variable at the start.</p> <br>
 
@@ -99,7 +99,7 @@
 			</div>
 			<br><br>
 
-			<pre class="code-block"><code><div class="line"><span class="line-number">Output:</span> 1897</div></code></pre><br><br>
+			<pre class="code-block"><code><div class="line"><span class="line-number">Output:</span> 1897</div></code></pre><br><br><br>
 			<p>The most recent 3000 games are loaded into the variable 'gameslist' by specifying 'max=3000'. This takes some time to complete so I recommend loading these games once and then saving the resulting list as a .pikl file so that it can be quickly loaded in again in the future. The games are split into a list of games where I played as black and a list where I played as black.</p> <br>
 
 
@@ -113,12 +113,12 @@
 
 <pre class="code-block"><code><div class="line"><span class="line-number">Output:</span> 3000 total bullet games.
  1505 as white.
- 1495 as black.</div></code></pre><br><br>
+ 1495 as black.</div></code></pre><br><br><br>
 
 <p>To plot a heatmap of the most common opening moves of my opponent when I have the black pieces I first create lists of the possible moves and the square that each move involves. A list of the frequency of each move in the blackgames list is created. An 8x8 NumPy array is created from the squares and move count lists. The heatmap is now plotted, with each square corresponding to a square on the chessboard. The X and Y axes labels indicate the orientation of the board.</p>
 <br>
-	<div class="copy-container" id="copy3">
 		<pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> move = ['a3','a4','b3','b4','c3','c4','d3','d4','e3','e4','f3','f4','g3','g4','h3','h4','Nf3','Nb3','Na3','Nh3']</div><div class="line"><span class="line-number">  2.</span> squares = [[2,7],[3,7],[2,6],[3,6],[2,5],[3,5],[2,4],[3,4],[2,3],[3,3],[2,2],[3,2],[2,1],[3,1],[2,0],[3,0],[2,2],[2,6],[2,7],[2,0]]</div><div class="line"><span class="line-number">  3.</span> values = [sum(1 for i in blackgames if i['moves'].split()[0] == m) for m in move]</div><div class="line"><span class="line-number">  4.</span> data = np.zeros([8, 8])</div><div class="line"><span class="line-number">  5.</span> data[[s[0] for s in squares], [s[1] for s in squares]] = values</div><div class="line"><span class="line-number">  6.</span> data_avg = data/sum(sum(data))</div><div class="line"><span class="line-number">  7.</span> cmap = sns.cm.rocket_r</div><div class="line"><span class="line-number">  8.</span> x_axis_labels = ['h','g','f','e','d','c','b','a']</div><div class="line"><span class="line-number">  9.</span> y_axis_labels = [*range(1,9)]</div><div class="line"><span class="line-number">10.</span> plt.gcf().set_facecolor('#333333')</div><div class="line"><span class="line-number">11.</span> plt.gca().set_facecolor('#333333')</div><div class="line"><span class="line-number">12.</span> ax = sns.heatmap(data_avg, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, </div><div class="line"><span class="line-number">13.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cmap=cmap, linewidth=0.5, cbar_kws={'label': 'Move Frequency'})</div><div class="line"><span class="line-number">14.</span> plt.title('Opening Moves of my Opponents as White', color='white')</div><div class="line"><span class="line-number">15.</span> ax.set_xlabel('File', color='white')</div><div class="line"><span class="line-number">16.</span> ax.set_ylabel('Rank', color='white')</div><div class="line"><span class="line-number">17.</span> ax.tick_params(colors='white')</div><div class="line"><span class="line-number">18.</span> colorbar = ax.collections[0].colorbar</div><div class="line"><span class="line-number">19.</span> colorbar.set_label('Move Frequency', color='white')</div><div class="line"><span class="line-number">20.</span> colorbar.ax.yaxis.set_tick_params(color='white')</div><div class="line"><span class="line-number">21.</span> plt.setp(colorbar.ax.get_yticklabels(), color='white')</div><div class="line"><span class="line-number">22.</span> plt.savefig('openings.png')</div><div class="line"><span class="line-number">23.</span> plt.show()</div></code></pre><br>
+	<div class="copy-container" id="copy3">
 				<button class="copyButton" onclick="copyText3()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
 <img src="/home/garyc/Website/images/openings.png" alt="Opponent Openings"><br><br>
