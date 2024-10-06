@@ -112,3 +112,113 @@ plt.show()`);
 		message.style.display = 'none';
 	});
 }
+
+function copyText5() {
+	navigator.clipboard.writeText(`letters = ['a','b','c','d','e','f','g','h']
+move = [i + str(j) for i in letters for j in range(1, 9)]
+values = [0]*64
+squares = [[i, x] for x in range(7, -1, -1) for i in range(8)]
+
+for x in blackgames:
+    if x['status'] == 'mate' and x['winner'] == 'white':
+        y = list(x['moves'].split(' '))[1::2]
+        king = 0
+        for i in y:
+            if i[0] == 'K':
+                king = i[-2:]
+            elif i == 'O-O':
+                king = 'g8'
+            elif i == 'O-O-O':
+                king = 'c8'
+        for m,v in zip(move,range(64)):
+            if m == king:
+                values[v] += 1
+        if king == 0:
+            values[39] += 1
+            
+data = np.zeros([8,8])
+data[[s[0] for s in squares], [s[1] for s in squares]] = values
+x_axis_labels = ['h','g','f','e','d','c','b','a']
+y_axis_labels = [*range(1,9)]
+plt.gcf().set_facecolor('#333333')
+plt.gca().set_facecolor('#333333') 
+data = data/(sum(sum(data)))
+ax = sns.heatmap(data, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap, 
+                 linewidth=0.5, cbar_kws={'label': 'Move Frequency'}) 
+plt.title('Square of My King at Checkmate, Black Pieces.', color = 'white')
+ax.set_xlabel('File', color='white') 
+ax.set_ylabel('Rank', color='white')
+ax.tick_params(colors='white')
+colorbar = ax.collections[0].colorbar
+colorbar.set_label('Move Frequency', color='white')
+colorbar.ax.yaxis.set_tick_params(color='white')
+plt.setp(colorbar.ax.get_yticklabels(), color='white') 
+plt.savefig('blackmate.png')
+plt.show()`);
+
+	var container = document.querySelector('#copy5');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
+
+function copyText6() {
+	navigator.clipboard.writeText(`letters = ['a','b','c','d','e','f','g','h']
+move = [i + str(j) for i in letters for j in range(1, 9)]
+values = [0]*64
+squares = [[i, x] for x in range(7, -1, -1) for i in range(8)]
+        
+for x in whitegames:
+    if x['status'] == 'mate' and x['winner'] == 'black':
+        y = list(x['moves'].split(' '))[0::2]
+        king = 0
+        for i in y:
+            if i[0] == 'K':
+                king = i[-2:]
+            elif i == 'O-O':
+                king = 'g1'
+            elif i == 'O-O-O':
+                king = 'c1'
+        for m,v in zip(move,range(64)):
+            if m == king:
+                values[v] += 1
+        if king == 0:
+            values[32] += 1
+            
+data = np.zeros([8,8])
+data[[s[0] for s in squares], [s[1] for s in squares]] = values
+x_axis_labels = ['h','g','f','e','d','c','b','a']
+y_axis_labels = [*range(1,9)]
+plt.gcf().set_facecolor('#333333')
+plt.gca().set_facecolor('#333333') 
+data = data/(sum(sum(data)))
+ax = sns.heatmap(data, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap, 
+                 linewidth=0.5, cbar_kws={'label': 'Move Frequency'})
+plt.title('Square of My King at Checkmate, White Pieces.', color = 'white')
+ax.set_xlabel('File', color='white') 
+ax.set_ylabel('Rank', color='white')
+ax.tick_params(colors='white')
+colorbar = ax.collections[0].colorbar
+colorbar.set_label('Move Frequency', color='white')
+colorbar.ax.yaxis.set_tick_params(color='white')
+plt.setp(colorbar.ax.get_yticklabels(), color='white')
+ax.invert_xaxis()
+ax.invert_yaxis()
+plt.savefig('whitemate.png')
+plt.show()`);
+
+	var container = document.querySelector('#copy6');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
+
+
