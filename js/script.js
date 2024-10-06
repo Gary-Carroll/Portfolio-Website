@@ -222,3 +222,34 @@ plt.show()`);
 }
 
 
+function copyText6() {
+	navigator.clipboard.writeText(`my_rating = [game['players'].get('white').get('rating') if game['players'].get('white').get('user').get('id') == 'garethc13' else
+           game['players'].get('black').get('rating') for game in gameslist]
+my_rating.reverse()
+
+fig, ax = plt.subplots()
+fig.patch.set_facecolor('#333333')
+ax.set_facecolor('#333333')
+ax.plot([*range(1, 3001)], my_rating, color='white', linewidth=0.7)
+ax.axhline(y=np.mean(my_rating), color='r', label="Average")
+ax.set_title("My rating over my last 3000 games", color='white')
+ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')
+ax.grid(color='white', linestyle='--', linewidth=0.5)
+ax.set_xlabel('Game Number', color='white') 
+ax.set_ylabel('Rating', color='white')
+ax.tick_params(colors='white')
+ax.spines[:].set_color('white')
+plt.savefig('my_rating.png')
+plt.show()`);
+
+	var container = document.querySelector('#copy6');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
+
+
