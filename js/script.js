@@ -222,7 +222,7 @@ plt.show()`);
 }
 
 
-function copyText6() {
+function copyText7() {
 	navigator.clipboard.writeText(`my_rating = [game['players'].get('white').get('rating') if game['players'].get('white').get('user').get('id') == 'garethc13' else
            game['players'].get('black').get('rating') for game in gameslist]
 my_rating.reverse()
@@ -242,7 +242,7 @@ ax.spines[:].set_color('white')
 plt.savefig('my_rating.png')
 plt.show()`);
 
-	var container = document.querySelector('#copy6');
+	var container = document.querySelector('#copy7');
 	var message = container.querySelector('.copyMessage');
 	var button = container.querySelector('.copyButton');
 
@@ -252,4 +252,33 @@ plt.show()`);
 	});
 }
 
+function copyText8() {
+	navigator.clipboard.writeText(`opponent_rating = [game['players'].get('white').get('rating') if game['players'].get('white').get('user').get('id') != 'garethc13' else
+           game['players'].get('black').get('rating') for game in gameslist]
+opponent_rating.reverse()
+adjusted_opponent_rating = [r for r in opponent_rating if r > 1550]
 
+fig, ax = plt.subplots()
+fig.patch.set_facecolor('#333333')
+ax.set_facecolor('#333333')
+ax.plot([*range(1,len(adjusted_opponent_rating) + 1)], adjusted_opponent_rating, color='white', linewidth=0.7)
+ax.axhline(y=np.mean(adjusted_opponent_rating), color='r', label="Average")
+ax.set_title(f"Opponent rating over my last {len(adjusted_opponent_rating)} games", color='white')
+ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')
+ax.grid(color='white', linestyle='--', linewidth=0.5)
+ax.set_xlabel('Game Number', color='white') 
+ax.set_ylabel('Rating', color='white')
+ax.tick_params(colors='white')
+ax.spines[:].set_color('white')
+plt.savefig('opp_rating.png')
+plt.show()`);
+
+	var container = document.querySelector('#copy8');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}

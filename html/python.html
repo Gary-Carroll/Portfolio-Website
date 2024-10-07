@@ -153,7 +153,15 @@
 				<button class="copyButton" onclick="copyText7()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
 	<img src="/home/garyc/Website/images/my_rating.png" alt="My rating over time"><br><br><br>
+	<p>The same graph is now plotted for the average rating of my opponents over these games. This line is much less smooth than my own rating trend as I was matched with opponents within a certain rating range from my own rating. Friendly games against lower rated friends are removed before plotting this graph.</p>
+	<br>
 
+	<pre class="code-block"><code><div class="line"><span class="line-number">   1.</span> opponent_rating = [game['players'].get('white').get('rating') if game['players'].get('white').get('user').get('id') != 'garethc13' else</div><div class="line"><span class="line-number">   2.</span>            game['players'].get('black').get('rating') for game in gameslist]</div><div class="line"><span class="line-number">   3.</span> opponent_rating.reverse()</div><div class="line"><span class="line-number">   4.</span> adjusted_opponent_rating = [r for r in opponent_rating if r > 1550]</div><div class="line"><span class="line-number">   5.</span></div><div class="line"><span class="line-number">   6.</span> fig, ax = plt.subplots()</div><div class="line"><span class="line-number">   7.</span> fig.patch.set_facecolor('#333333')</div><div class="line"><span class="line-number">   8.</span> ax.set_facecolor('#333333')</div><div class="line"><span class="line-number">   9.</span> ax.plot([*range(1,len(adjusted_opponent_rating) + 1)], adjusted_opponent_rating, color='white', linewidth=0.7)</div><div class="line"><span class="line-number">  10.</span> ax.axhline(y=np.mean(adjusted_opponent_rating), color='r', label="Average")</div><div class="line"><span class="line-number">  11.</span> ax.set_title(f"Opponent rating over my last {len(adjusted_opponent_rating)} games", color='white')</div><div class="line"><span class="line-number">  12.</span> ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')</div><div class="line"><span class="line-number">  13.</span> ax.grid(color='white', linestyle='--', linewidth=0.5)</div><div class="line"><span class="line-number">  14.</span> ax.set_xlabel('Game Number', color='white')</div><div class="line"><span class="line-number">  15.</span> ax.set_ylabel('Rating', color='white')</div><div class="line"><span class="line-number">  16.</span> ax.tick_params(colors='white')</div><div class="line"><span class="line-number">  17.</span> ax.spines[:].set_color('white')</div><div class="line"><span class="line-number">  18.</span> plt.savefig('opp_rating.png')</div><div class="line"><span class="line-number">  19.</span> plt.show()</div></code></pre><br>
+	<div class="copy-container" id="copy8">
+				<button class="copyButton" onclick="copyText8()">Copy code</button>
+				<span class="copyMessage">Text copied</span></div><br><br>
+	<img src="/home/garyc/Website/images/opp_rating.png" alt="Opponent rating over time"><br><br><br>
+	
 			</div>
 			<br><br>
 
