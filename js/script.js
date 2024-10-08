@@ -282,3 +282,32 @@ plt.show()`);
 		message.style.display = 'none';
 	});
 }
+
+function copyText9() {
+	navigator.clipboard.writeText(`day_dict = {day: {'total':0,'win':0,'draw':0,'loss':0} for day in calendar.day_name}
+hour_dict = {key: {'total':0,'win':0,'draw':0,'loss':0} for key in range(24)}
+
+for game in gameslist:
+    day = datetime.fromtimestamp(game.get('createdAt')/1000).strftime("%A")
+    time = datetime.fromtimestamp(game.get('createdAt')/1000).hour
+    colour = "white" if game.get('players').get('white').get('user').get('id') == "garethc13" else "black"
+    winner = game.get('winner')
+    result = "win" if colour == winner else("draw" if winner == None else "loss")
+    day_dict[day][result] += 1
+    day_dict[day]['total'] += 1
+    hour_dict[time][result] += 1
+    hour_dict[time]['total'] += 1
+    
+pprint(day_dict)
+print()
+pprint(hour_dict)`);
+
+	var container = document.querySelector('#copy9');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
