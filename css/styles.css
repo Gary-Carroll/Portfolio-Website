@@ -217,6 +217,39 @@ main {
 .code-block code {
 	white-space: pre-wrap;
 }
+
+.output-block {
+    background-color: #333333;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    font-family: "Courier New", Courier, monospace;
+    overflow-x: auto;
+    display: inline-block;
+    margin: 0;
+    height: auto;
+    width: 85%;
+    text-align: left;
+    position: relative;
+}
+
+.output-title {
+    text-align: center;
+    width: auto;
+    background-color: #444;
+    color: #ccc;
+    padding: 2px 5px;
+    margin-bottom: 10px;
+    font-family: "Courier New", Courier, monospace;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.output-block code {
+    white-space: pre-wrap;
+}
+
 pre {
 	margin: 0;
 	padding: 0;
