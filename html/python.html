@@ -198,8 +198,17 @@
  20: {'draw': 15, 'loss': 94, 'total': 195, 'win': 86},
  21: {'draw': 11, 'loss': 79, 'total': 158, 'win': 68},
  22: {'draw': 8, 'loss': 65, 'total': 142, 'win': 69},
- 23: {'draw': 4, 'loss': 66, 'total': 151, 'win': 81}}</div></code></pre><br><br><br>
+ 23: {'draw': 4, 'loss': 66, 'total': 151, 'win': 81}}</code></pre><br><br><br>
 
+<p>These dictionaries are now converted to DataFrames using Pandas, and then transposed so that stacked bar plots of win/draw/loss can be plotted for each day and hour. Shown first is the barplot for hour of the day. Unsurpisringly, I lost the only game I ever played at 4am.</p><br>
+
+<pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> df = pd.DataFrame(hour_dict).T</div><div class="line"><span class="line-number">  2.</span> fig, ax = plt.subplots(figsize=(10, 6))</div><div class="line"><span class="line-number">  3.</span> fig.patch.set_facecolor('#333333')</div><div class="line"><span class="line-number">  4.</span> ax.set_facecolor('#333333')</div><div class="line"><span class="line-number">  5.</span> df[['win', 'draw', 'loss']].plot(kind='bar', stacked=True, ax=ax, color=['#00CC00', '#007ACC', '#CC3300'])</div><div class="line"><span class="line-number">  6.</span> plt.xlabel("Hour of the Day", color='white', fontsize=14)</div><div class="line"><span class="line-number">  7.</span> plt.xticks(rotation=0, color='white')</div><div class="line"><span class="line-number">  8.</span> plt.ylabel("Number of Games", color='white', fontsize=14)</div><div class="line"><span class="line-number">  9.</span> plt.legend(fontsize=15, facecolor='#333333', edgecolor='white', labelcolor='white')</div><div class="line"><span class="line-number"> 10.</span> plt.title("Count of Wins, Draws, and Losses by Hour", color='white', fontsize=18)</div><div class="line"><span class="line-number"> 11.</span> ax.spines[:].set_color('white')</div><div class="line"><span class="line-number"> 12.</span> ax.tick_params(colors='white')</div><div class="line"><span class="line-number"> 13.</span> plt.savefig("hours.png")</div><div class="line"><span class="line-number"> 14.</span> plt.show()</div></code></pre><br>
+
+	<div class="copy-container" id="copy10">
+				<button class="copyButton" onclick="copyText10()">Copy code</button>
+				<span class="copyMessage">Text copied</span></div><br><br>
+
+	<img src="/home/garyc/Website/images/hours.png" alt="Winrate by hour of day.`"><br><br><br>
 
 			</div>
 			<br><br>

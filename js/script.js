@@ -311,3 +311,29 @@ pprint(hour_dict)`);
 		message.style.display = 'none';
 	});
 }
+
+function copyText10() {
+	navigator.clipboard.writeText(`df = pd.DataFrame(hour_dict).T
+fig, ax = plt.subplots(figsize=(10, 6))
+fig.patch.set_facecolor('#333333')
+ax.set_facecolor('#333333')
+df[['win', 'draw', 'loss']].plot(kind='bar', stacked=True, ax=ax, color=['#00CC00', '#007ACC', '#CC3300'])
+plt.xlabel("Hour of the Day", color='white', fontsize=14)
+plt.xticks(rotation=0, color='white')
+plt.ylabel("Number of Games", color='white', fontsize=14)
+plt.legend(fontsize=15, facecolor='#333333', edgecolor='white', labelcolor='white')
+plt.title("Count of Wins, Draws, and Losses by Hour", color='white', fontsize=18)
+ax.spines[:].set_color('white')
+ax.tick_params(colors='white')
+plt.savefig("hours.png")
+plt.show()`);
+
+	var container = document.querySelector('#copy10');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
