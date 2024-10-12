@@ -56,11 +56,11 @@ plt.gcf().set_facecolor('#333333')
 plt.gca().set_facecolor('#333333') 
 ax = sns.heatmap(data_avg, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap, linewidth=0.5, cbar_kws={'label': 'Move Frequency'}) 
 plt.title('Opening Moves of my Opponents as White', color='white') 
-ax.set_xlabel('File', color='white') 
-ax.set_ylabel('Rank', color='white')
+ax.set_xlabel('File', color='white', fontsize=13) 
+ax.set_ylabel('Rank', color='white', fontsize=13)
 ax.tick_params(colors='white')
 colorbar = ax.collections[0].colorbar
-colorbar.set_label('Move Frequency', color='white')
+colorbar.set_label('Move Frequency', color='white', fontsize=13)
 colorbar.ax.yaxis.set_tick_params(color='white')
 plt.setp(colorbar.ax.get_yticklabels(), color='white') 
 plt.savefig('openings.png')
@@ -91,13 +91,13 @@ plt.gca().set_facecolor('#333333')
 ax = sns.heatmap(data_avg, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap, 
                  linewidth=0.5, cbar_kws={'label': 'Move Frequency'}) 
 plt.title('Opening Moves by Me as White', color='white') 
-ax.set_xlabel('File', color='white') 
-ax.set_ylabel('Rank', color='white')
+ax.set_xlabel('File', color='white', fontsize=13) 
+ax.set_ylabel('Rank', color='white', fontsize=13)
 ax.invert_xaxis()
 ax.invert_yaxis()
 ax.tick_params(colors='white')
 colorbar = ax.collections[0].colorbar
-colorbar.set_label('Move Frequency', color='white')
+colorbar.set_label('Move Frequency', color='white', fontsize=13)
 colorbar.ax.yaxis.set_tick_params(color='white')
 plt.setp(colorbar.ax.get_yticklabels(), color='white') 
 plt.savefig('openings2.png')
@@ -146,11 +146,11 @@ data = data/(sum(sum(data)))
 ax = sns.heatmap(data, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap, 
                  linewidth=0.5, cbar_kws={'label': 'Move Frequency'}) 
 plt.title('Square of My King at Checkmate, Black Pieces.', color = 'white')
-ax.set_xlabel('File', color='white') 
-ax.set_ylabel('Rank', color='white')
+ax.set_xlabel('File', color='white', fontsize=13) 
+ax.set_ylabel('Rank', color='white', fontsize=13)
 ax.tick_params(colors='white')
 colorbar = ax.collections[0].colorbar
-colorbar.set_label('Move Frequency', color='white')
+colorbar.set_label('Move Frequency', color='white', fontsize=13)
 colorbar.ax.yaxis.set_tick_params(color='white')
 plt.setp(colorbar.ax.get_yticklabels(), color='white') 
 plt.savefig('blackmate.png')
@@ -199,11 +199,11 @@ data = data/(sum(sum(data)))
 ax = sns.heatmap(data, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap, 
                  linewidth=0.5, cbar_kws={'label': 'Move Frequency'})
 plt.title('Square of My King at Checkmate, White Pieces.', color = 'white')
-ax.set_xlabel('File', color='white') 
-ax.set_ylabel('Rank', color='white')
+ax.set_xlabel('File', color='white', fontsize=13) 
+ax.set_ylabel('Rank', color='white', fontsize=13)
 ax.tick_params(colors='white')
 colorbar = ax.collections[0].colorbar
-colorbar.set_label('Move Frequency', color='white')
+colorbar.set_label('Move Frequency', color='white', fontsize=13)
 colorbar.ax.yaxis.set_tick_params(color='white')
 plt.setp(colorbar.ax.get_yticklabels(), color='white')
 ax.invert_xaxis()
@@ -235,8 +235,8 @@ ax.axhline(y=np.mean(my_rating), color='r', label="Average")
 ax.set_title("My rating over my last 3000 games", color='white')
 ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')
 ax.grid(color='white', linestyle='--', linewidth=0.5)
-ax.set_xlabel('Game Number', color='white') 
-ax.set_ylabel('Rating', color='white')
+ax.set_xlabel('Game Number', color='white', fontsize=13) 
+ax.set_ylabel('Rating', color='white', fontsize=13)
 ax.tick_params(colors='white')
 ax.spines[:].set_color('white')
 plt.savefig('my_rating.png')
@@ -266,8 +266,8 @@ ax.axhline(y=np.mean(adjusted_opponent_rating), color='r', label="Average")
 ax.set_title(f"Opponent rating over my last {len(adjusted_opponent_rating)} games", color='white')
 ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')
 ax.grid(color='white', linestyle='--', linewidth=0.5)
-ax.set_xlabel('Game Number', color='white') 
-ax.set_ylabel('Rating', color='white')
+ax.set_xlabel('Game Number', color='white', fontsize=13) 
+ax.set_ylabel('Rating', color='white', fontsize=13)
 ax.tick_params(colors='white')
 ax.spines[:].set_color('white')
 plt.savefig('opp_rating.png')
@@ -329,6 +329,32 @@ plt.savefig("hours.png")
 plt.show()`);
 
 	var container = document.querySelector('#copy10');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
+
+function copyText11() {
+	navigator.clipboard.writeText(`df = pd.DataFrame(day_dict).T
+fig, ax = plt.subplots(figsize=(10, 6))
+fig.patch.set_facecolor('#333333')
+ax.set_facecolor('#333333')
+df[['win', 'draw', 'loss']].plot(kind='bar', stacked=True, ax=ax, color=['#00CC00', '#007ACC', '#CC3300'])
+plt.xlabel("Day of the Week", color='white', fontsize=14)
+plt.xticks(rotation=0, color='white')
+plt.ylabel("Number of Games", color='white', fontsize=14)
+plt.legend(fontsize=15, facecolor='#333333', edgecolor='white', labelcolor='white')
+plt.title("Count of Wins, Draws, and Losses by Day", color='white', fontsize=18)
+ax.spines[:].set_color('white')
+ax.tick_params(colors='white')
+plt.savefig("days.png")
+plt.show()`);
+
+	var container = document.querySelector('#copy11');
 	var message = container.querySelector('.copyMessage');
 	var button = container.querySelector('.copyButton');
 
