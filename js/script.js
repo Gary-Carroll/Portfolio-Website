@@ -363,3 +363,53 @@ plt.show()`);
 		message.style.display = 'none';
 	});
 }
+
+function copyText12() {
+	navigator.clipboard.writeText(`statuses = {game.get('status') for game in gameslist}
+status_dict = {status: {key:0 for key in ('win', 'draw', 'loss', 'total')} for status in statuses}
+
+for game in gameslist:
+    colour = "white" if game.get('players').get('white').get('user').get('id') == "garethc13" else "black"
+    winner = game.get('winner')
+    result = "win" if colour == winner else("draw" if winner == None else "loss")
+    status = game.get('status')
+    status_dict[status][result] += 1
+    status_dict[status]['total'] += 1
+
+pprint(status_dict)`);
+
+	var container = document.querySelector('#copy12');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}
+
+function copyText13() {
+	navigator.clipboard.writeText(`df = pd.DataFrame(status_dict).T.sort_values(by='total', ascending=False)
+fig, ax = plt.subplots(figsize=(10, 6))
+fig.patch.set_facecolor('#333333')
+ax.set_facecolor('#333333')
+df[['win', 'draw', 'loss']].plot(kind='bar', stacked=True, ax=ax, color=['#00CC00', '#007ACC', '#CC3300'])
+plt.xlabel("Status", color='white', fontsize=14)
+plt.xticks(rotation=0, fontsize=12)
+plt.ylabel("Number of Games", color='white', fontsize=14)
+plt.legend(fontsize=15, facecolor='#333333', edgecolor='white', labelcolor='white')
+plt.title("Status of Game Ending", color='white', fontsize=18)
+ax.spines[:].set_color('white')
+ax.tick_params(colors='white')
+plt.savefig('status.png')
+plt.show()`);
+
+	var container = document.querySelector('#copy13');
+	var message = container.querySelector('.copyMessage');
+	var button = container.querySelector('.copyButton');
+
+	message.style.display = 'inline';
+	button.addEventListener('mouseleave', function() {
+		message.style.display = 'none';
+	});
+}

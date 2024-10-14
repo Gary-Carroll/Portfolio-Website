@@ -88,7 +88,7 @@
  'speed': 'bullet',
  'status': 'outoftime',
  'variant': 'standard',
- 'winner': 'black'}</code></pre><br><br><br>
+ 'winner': 'black'}</code></pre><br><br><br><br><br>
 
 				<p>This first code block shows the packages and modules that are imported, and how to access the data of a specific user ID. The rest of the code can be run for any specific user by modifying only the user_id variable at the start.</p> <br>
 
@@ -99,7 +99,7 @@
 			</div>
 			<br><br>
 
-			<pre class="output-block"><code><div class="output-title">Output:</div><br>1897</code></pre><br><br><br>
+			<pre class="output-block"><code><div class="output-title">Output:</div><br>1897</code></pre><br><br><br><br><br>
 			<p>The most recent 3000 games are loaded into the variable 'gameslist' by specifying 'max=3000'. This takes some time to complete so I recommend loading these games once and then saving the resulting list as a .pikl file so that it can be quickly loaded in again in the future. The games are split into a list of games where I played as black and a list where I played as black.</p> <br>
 
 
@@ -113,7 +113,7 @@
 
 <pre class="output-block"><code><div class="output-title">Output:</div><br>3000 total bullet games.
 1505 as white.
-1495 as black.</code></pre><br><br><br>
+1495 as black.</code></pre><br><br><br><br><br>
 
 <p>To plot a heatmap of the most common opening moves of my opponent when I have the black pieces I first create lists of the possible moves and the square that each move involves. A list of the frequency of each move in the blackgames list is created. An 8x8 NumPy array is created from the squares and move count lists. The heatmap is now plotted, with each square corresponding to a square on the chessboard. The X and Y axes labels indicate the orientation of the board.</p>
 <br>
@@ -121,7 +121,7 @@
 	<div class="copy-container" id="copy3">
 				<button class="copyButton" onclick="copyText3()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
-			<img src="/home/garyc/Website/images/openings.png" alt="Opponent Openings"><br><br><br>
+			<img src="/home/garyc/Website/images/openings.png" alt="Opponent Openings"><br><br><br><br><br>
 
 <p>The same heatmap is now plotted for my own opening moves as white. Unfortunately I am not a very creative chess player and start over 99% of my games with 1.e4. This would be a much more useful graph for a player with a more varied opening repertoire. The X and Y axis labels are inverted for this plot compared to the previous to show the board once again from my point of view.</p><br>
 
@@ -129,14 +129,14 @@
 	<div class="copy-container" id="copy4">
 				<button class="copyButton" onclick="copyText4()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
-	<img src="/home/garyc/Website/images/openings2.png" alt="Opponent Openings"><br><br><br>
+			<img src="/home/garyc/Website/images/openings2.png" alt="Opponent Openings"><br><br><br><br><br>
 	<p>A heatmap is now plotted showing the square that my king is on when I am checkmated as black. Unsurprisingly, the most frequent squares are g8 and its surrounding squares as this is the square that the king ends up on after castling, which occurs in the vast majority of games.</p>
 	<br>
 	<pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> letters = ['a','b','c','d','e','f','g','h']</div><div class="line"><span class="line-number">  2.</span> move = [i + str(j) for i in letters for j in range(1, 9)]</div><div class="line"><span class="line-number">  3.</span> values = [0]*64</div><div class="line"><span class="line-number">  4.</span> squares = [[i, x] for x in range(7, -1, -1) for i in range(8)]</div><div class="line"><span class="line-number">  5.</span></div><div class="line"><span class="line-number">  6.</span> for x in blackgames:</div><div class="line"><span class="line-number">  7.</span> &nbsp;&nbsp;&nbsp;&nbsp;if x['status'] == 'mate' and x['winner'] == 'white':</div><div class="line"><span class="line-number">  8.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = list(x['moves'].split(' '))[1::2]</div><div class="line"><span class="line-number">  9.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;king = 0</div><div class="line"><span class="line-number">10.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for i in y:</div><div class="line"><span class="line-number">11.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if i[0] == 'K':</div><div class="line"><span class="line-number">12.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;king = i[-2:]</div><div class="line"><span class="line-number">13.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif i == 'O-O':</div><div class="line"><span class="line-number">14.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;king = 'g8'</div><div class="line"><span class="line-number">15.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elif i == 'O-O-O':</div><div class="line"><span class="line-number">16.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;king = 'c8'</div><div class="line"><span class="line-number">17.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for m,v in zip(move,range(64)):</div><div class="line"><span class="line-number">18.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if m == king:</div><div class="line"><span class="line-number">19.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values[v] += 1</div><div class="line"><span class="line-number">20.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if king == 0:</div><div class="line"><span class="line-number">21.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values[39] += 1</div><div class="line"><span class="line-number">22.</span></div><div class="line"><span class="line-number">23.</span> data = np.zeros([8,8])</div><div class="line"><span class="line-number">24.</span> data[[s[0] for s in squares], [s[1] for s in squares]] = values</div><div class="line"><span class="line-number">25.</span> x_axis_labels = ['h','g','f','e','d','c','b','a']</div><div class="line"><span class="line-number">26.</span> y_axis_labels = [*range(1,9)]</div><div class="line"><span class="line-number">27.</span> plt.gcf().set_facecolor('#333333')</div><div class="line"><span class="line-number">28.</span> plt.gca().set_facecolor('#333333')</div><div class="line"><span class="line-number">29.</span> data = data/(sum(sum(data)))</div><div class="line"><span class="line-number">30.</span> ax = sns.heatmap(data, square=True, xticklabels=x_axis_labels, yticklabels=y_axis_labels, cmap=cmap,</div><div class="line"><span class="line-number">31.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linewidth=0.5, cbar_kws={'label': 'Move Frequency'})</div><div class="line"><span class="line-number">32.</span> plt.title('Square of king at checkmate, black pieces.', color = 'white')</div><div class="line"><span class="line-number">33.</span> ax.set_xlabel('File', color='white', fontsize=13)</div><div class="line"><span class="line-number">34.</span> ax.set_ylabel('Rank', color='white', fontsize=13)</div><div class="line"><span class="line-number">35.</span> ax.tick_params(colors='white')</div><div class="line"><span class="line-number">36.</span> colorbar = ax.collections[0].colorbar</div><div class="line"><span class="line-number">37.</span> colorbar.set_label('Move Frequency', color='white', fontsize=13)</div><div class="line"><span class="line-number">38.</span> colorbar.ax.yaxis.set_tick_params(color='white')</div><div class="line"><span class="line-number">39.</span> plt.setp(colorbar.ax.get_yticklabels(), color='white')</div><div class="line"><span class="line-number">40.</span> plt.savefig('blackmate.png')</div><div class="line"><span class="line-number">41.</span> plt.show()</div></code></pre><br>
 	<div class="copy-container" id="copy5">
 				<button class="copyButton" onclick="copyText5()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
-	<img src="/home/garyc/Website/images/blackmate.png" alt="Checkmate as Black"><br><br><br>
+			<img src="/home/garyc/Website/images/blackmate.png" alt="Checkmate as Black"><br><br><br><br><br>
 
 	<p>This is now repeated to plot the heatmap of the most common square of my king when I am checkmated as white. The only difference here is that once again the X and Y axes are inverted to display the board from my point of view. Once again the results are unsurpising, with the g1 square and its surrounding squares being the most frequent. This one again is a result of castling kingside in most games.</p><br>
 
@@ -144,7 +144,7 @@
 	<div class="copy-container" id="copy6">
 				<button class="copyButton" onclick="copyText6()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
-	<img src="/home/garyc/Website/images/whitemate.png" alt="Checkmate as White"><br><br><br>
+			<img src="/home/garyc/Website/images/whitemate.png" alt="Checkmate as White"><br><br><br><br><br>
 	<p>A line chart of my rating over the 3000 games is now plotted. An average line is included.</p><br>
 
 <pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> my_rating = [game['players'].get('white').get('rating') if game['players'].get('white').get('user').get('id') == 'garethc13' else</div><div class="line"><span class="line-number">  2.</span>            game['players'].get('black').get('rating') for game in gameslist]</div><div class="line"><span class="line-number">  3.</span> my_rating.reverse()</div><div class="line"><span class="line-number">  4.</span></div><div class="line"><span class="line-number">  5.</span> fig, ax = plt.subplots()</div><div class="line"><span class="line-number">  6.</span> fig.patch.set_facecolor('#333333')</div><div class="line"><span class="line-number">  7.</span> ax.set_facecolor('#333333')</div><div class="line"><span class="line-number">  8.</span> ax.plot([*range(1, 3001)], my_rating, color='white', linewidth=0.7)</div><div class="line"><span class="line-number">  9.</span> ax.axhline(y=np.mean(my_rating), color='r', label="Average")</div><div class="line"><span class="line-number">10.</span> ax.set_title("My rating over my last 3000 games", color='white')</div><div class="line"><span class="line-number">11.</span> ax.legend(facecolor='#333333', edgecolor='white', labelcolor='white')</div><div class="line"><span class="line-number">12.</span> ax.grid(color='white', linestyle='--', linewidth=0.5)</div><div class="line"><span class="line-number">13.</span> ax.set_xlabel('Game Number', color='white', fontsize=13)</div><div class="line"><span class="line-number">14.</span> ax.set_ylabel('Rating', color='white', fontsize=13)</div><div class="line"><span class="line-number">15.</span> ax.tick_params(colors='white')</div><div class="line"><span class="line-number">16.</span> ax.spines[:].set_color('white')</div><div class="line"><span class="line-number">17.</span> plt.savefig('my_rating.png')</div><div class="line"><span class="line-number">18.</span> plt.show()</div></code></pre><br>
@@ -152,7 +152,7 @@
 	<div class="copy-container" id="copy7">
 				<button class="copyButton" onclick="copyText7()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
-	<img src="/home/garyc/Website/images/my_rating.png" alt="My rating over time"><br><br><br>
+			<img src="/home/garyc/Website/images/my_rating.png" alt="My rating over time"><br><br><br><br><br>
 	<p>The same graph is now plotted for the average rating of my opponents over these games. This line is much less smooth than my own rating trend as I was matched with opponents within a certain rating range from my own rating. Friendly games against lower rated friends are removed before plotting this graph.</p>
 	<br>
 
@@ -160,7 +160,7 @@
 	<div class="copy-container" id="copy8">
 				<button class="copyButton" onclick="copyText8()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
-	<img src="/home/garyc/Website/images/opp_rating.png" alt="Opponent rating over time"><br><br><br>
+			<img src="/home/garyc/Website/images/opp_rating.png" alt="Opponent rating over time"><br><br><br><br><br>
 	<p>To analyse my performance by hour of day and day of week, I first create a dictionary for each of these. The hour and day are extracted from the timestamp associated with the 'createdAt' key of the game dictionary. This timestamp is in Unix millisecond format so must be divided by 1000 before applying the 'fromtimestamp()' function from the 'datetime' module. The 'pprint()' function prints the dictionaries in a easily readable format.</p>
 	<br>
 	<pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> day_dict = {day: {'total':0,'win':0,'draw':0,'loss':0} for day in calendar.day_name}</div><div class="line"><span class="line-number">  2.</span> hour_dict = {key: {'total':0,'win':0,'draw':0,'loss':0} for key in range(24)}</div><div class="line"><span class="line-number">  3.</span></div><div class="line"><span class="line-number">  4.</span> for game in gameslist:</div><div class="line"><span class="line-number">  5.</span>      day = datetime.fromtimestamp(game.get('createdAt')/1000).strftime("%A")</div><div class="line"><span class="line-number">  6.</span>      time = datetime.fromtimestamp(game.get('createdAt')/1000).hour</div><div class="line"><span class="line-number">  7.</span>      colour = "white" if game.get('players').get('white').get('user').get('id') == "garethc13" else "black"</div><div class="line"><span class="line-number">  8.</span>      winner = game.get('winner')</div><div class="line"><span class="line-number">  9.</span>      result = "win" if colour == winner else("draw" if winner == None else "loss")</div><div class="line"><span class="line-number">10.</span>      day_dict[day][result] += 1</div><div class="line"><span class="line-number">11.</span>      day_dict[day]['total'] += 1</div><div class="line"><span class="line-number">12.</span>      hour_dict[time][result] += 1</div><div class="line"><span class="line-number">13.</span>      hour_dict[time]['total'] += 1</div><div class="line"><span class="line-number">14.</span></div><div class="line"><span class="line-number">15.</span> pprint(day_dict)</div><div class="line"><span class="line-number">16.</span> print()</div><div class="line"><span class="line-number">17.</span> pprint(hour_dict)</div></code></pre><br>
@@ -198,7 +198,7 @@
  20: {'draw': 15, 'loss': 94, 'total': 195, 'win': 86},
  21: {'draw': 11, 'loss': 79, 'total': 158, 'win': 68},
  22: {'draw': 8, 'loss': 65, 'total': 142, 'win': 69},
- 23: {'draw': 4, 'loss': 66, 'total': 151, 'win': 81}}</code></pre><br><br><br>
+ 23: {'draw': 4, 'loss': 66, 'total': 151, 'win': 81}}</code></pre><br><br><br><br><br>
 
 <p>These dictionaries are now converted to DataFrames using Pandas, and then transposed so that stacked bar plots of win/draw/loss can be plotted for each day and hour. Shown first is the barplot for hour of the day. Unsurpisringly, I lost the only game I ever played at 4am.</p><br>
 
@@ -208,7 +208,7 @@
 				<button class="copyButton" onclick="copyText10()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
 
-	<img src="/home/garyc/Website/images/hours.png" alt="Winrate by hour of day.`"><br><br><br>
+			<img src="/home/garyc/Website/images/hours.png" alt="Winrate by hour of day.`"><br><br><br><br><br>
 
 	<p>This barplot is now recreated for the day of the week.</p><br>
 <pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> df = pd.DataFrame(day_dict).T</div><div class="line"><span class="line-number">  2.</span> fig, ax = plt.subplots(figsize=(10, 6))</div><div class="line"><span class="line-number">  3.</span> fig.patch.set_facecolor('#333333')</div><div class="line"><span class="line-number">  4.</span> ax.set_facecolor('#333333')</div><div class="line"><span class="line-number">  5.</span> df[['win', 'draw', 'loss']].plot(kind='bar', stacked=True, ax=ax, color=['#00CC00', '#007ACC', '#CC3300'])</div><div class="line"><span class="line-number">  6.</span> plt.xlabel("Day of the Week", color='white', fontsize=14)</div><div class="line"><span class="line-number">  7.</span> plt.xticks(rotation=0, color='white')</div><div class="line"><span class="line-number">  8.</span> plt.ylabel("Number of Games", color='white', fontsize=14)</div><div class="line"><span class="line-number">  9.</span> plt.legend(fontsize=15, facecolor='#333333', edgecolor='white', labelcolor='white')</div><div class="line"><span class="line-number">10.</span> plt.title("Count of Wins, Draws, and Losses by Day", color='white', fontsize=18)</div><div class="line"><span class="line-number">11.</span> ax.spines[:].set_color('white')</div><div class="line"><span class="line-number">12.</span> ax.tick_params(colors='white')</div><div class="line"><span class="line-number">13.</span> plt.savefig("days.png")</div><div class="line"><span class="line-number">14.</span> plt.show()</div></code></pre><br>
@@ -217,7 +217,31 @@
 				<button class="copyButton" onclick="copyText11()">Copy code</button>
 				<span class="copyMessage">Text copied</span></div><br><br>
 
-<img src="/home/garyc/Website/images/days.png" alt="Winrate by day of week.`"><br><br><br>
+			<img src="/home/garyc/Website/images/days.png" alt="Winrate by day of week.`"><br><br><br><br><br>
+			<p>I can use the 'status' key to create a bar chart showing information on how games end. I first create a dictionary with counts of win/draw/loss for each possible manner that games can end</p><br>
+<pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> statuses = {game.get('status') for game in gameslist}</div><div class="line"><span class="line-number">  2.</span> status_dict = {status: {key:0 for key in ('win', 'draw', 'loss', 'total')} for status in statuses}</div><div class="line"><span class="line-number">  3.</span> for game in gameslist:</div><div class="line"><span class="line-number">  4.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colour = "white" if game.get('players').get('white').get('user').get('id') == "garethc13" else "black"</div><div class="line"><span class="line-number">  5.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;winner = game.get('winner')</div><div class="line"><span class="line-number">  6.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = "win" if colour == winner else("draw" if winner == None else "loss")</div><div class="line"><span class="line-number">  7.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;status = game.get('status')</div><div class="line"><span class="line-number">  8.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;status_dict[status][result] += 1</div><div class="line"><span class="line-number">  9.</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;status_dict[status]['total'] += 1</div><div class="line"><span class="line-number">10.</span> pprint(status_dict)</div></code></pre>
+<br>
+	<div class="copy-container" id="copy12">
+				<button class="copyButton" onclick="copyText12()">Copy code</button>
+				<span class="copyMessage">Text copied</span></div><br><br>
+
+<pre class="output-block"><code><div class="output-title">Output:</div><br>{'draw': {'draw': 45, 'loss': 0, 'total': 45, 'win': 0},
+ 'mate': {'draw': 0, 'loss': 296, 'total': 566, 'win': 270},
+ 'outoftime': {'draw': 64, 'loss': 157, 'total': 1091, 'win': 870},
+ 'resign': {'draw': 0, 'loss': 972, 'total': 1259, 'win': 287},
+ 'stalemate': {'draw': 24, 'loss': 0, 'total': 24, 'win': 0},
+ 'timeout': {'draw': 1, 'loss': 6, 'total': 15, 'win': 8}}</code></pre><br><br><br><br><br>
+
+			<p>There are 6 possible ways that a game can end. 'resign', 'outoftime', 'mate' and 'stalemate' are self-explanatory. 'draw' means that players agreed to a draw or drew the game by threefold repetition. 'timeout' means that a players has left the game, either by disconnecting or quitting without resigning. This graph shows that I achieve the majority of my wins by playing down my opponent's clock, known as 'flagging' them. The majority of my losses are by resignation.</p>
+			<br>
+<pre class="code-block"><code><div class="line"><span class="line-number">  1.</span> df = pd.DataFrame(status_dict).T.sort_values(by='total', ascending=False)</div><div class="line"><span class="line-number">  2.</span> fig, ax = plt.subplots(figsize=(10, 6))</div><div class="line"><span class="line-number">  3.</span> fig.patch.set_facecolor('#333333')</div><div class="line"><span class="line-number">  4.</span> ax.set_facecolor('#333333')</div><div class="line"><span class="line-number">  5.</span> df[['win', 'draw', 'loss']].plot(kind='bar', stacked=True, ax=ax, color=['#00CC00', '#007ACC', '#CC3300'])</div><div class="line"><span class="line-number">  6.</span> plt.xlabel("Status", color='white', fontsize=14)</div><div class="line"><span class="line-number">  7.</span> plt.xticks(rotation=0, fontsize=12)</div><div class="line"><span class="line-number">  8.</span> plt.ylabel("Number of Games", color='white', fontsize=14)</div><div class="line"><span class="line-number">  9.</span> plt.legend(fontsize=15, facecolor='#333333', edgecolor='white', labelcolor='white')</div><div class="line"><span class="line-number">10.</span> plt.title("Status of Game Ending", color='white', fontsize=18)</div><div class="line"><span class="line-number">11.</span> ax.spines[:].set_color('white')</div><div class="line"><span class="line-number">12.</span> ax.tick_params(colors='white')</div><div class="line"><span class="line-number">13.</span> plt.savefig('status.png')</div><div class="line"><span class="line-number">14.</span> plt.show()</div></code></pre>
+<br>
+	<div class="copy-container" id="copy13">
+				<button class="copyButton" onclick="copyText13()">Copy code</button>
+				<span class="copyMessage">Text copied</span></div><br><br>
+			<img src="/home/garyc/Website/images/status.png" alt="Status of Game Ending.`"><br><br><br><br><br>
+
+
 
 			</div>
 			<br><br>

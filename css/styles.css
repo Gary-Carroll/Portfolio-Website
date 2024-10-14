@@ -38,6 +38,10 @@ header {
     gap: 4rem;
 }
 
+.header-content-right .parent:last-child {
+    margin-right: 4rem;
+}
+
 .header-logo-1 {
     height: 60px;
     width: auto;
